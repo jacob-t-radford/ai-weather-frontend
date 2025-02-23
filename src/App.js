@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const BACKEND_URL = "http://54.211.21.49/test"; // Replace with your actual EC2 IP
+const BACKEND_URL = "https://aiweather.duckdns.org/test"; // Replace with your actual EC2 IP
 
 const App = () => {
     const [response, setResponse] = useState("");
