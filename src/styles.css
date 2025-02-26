@@ -4,12 +4,14 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f4f4f4;
+	background: url("https://cdn.star.nesdis.noaa.gov/GOES16/ABI/CONUS/GEOCOLOR/20250572321_GOES16-ABI-CONUS-GEOCOLOR-1250x750.jpg") no-repeat center center/cover;
+	filter: blue(3px);
 }
 
 /* Card (form box) */
 .card {
-    background: white;
+    background: rgba(255,255,255,0.8);
+	backdrop-filter: blur(5px);
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
