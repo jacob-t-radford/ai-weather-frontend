@@ -1,42 +1,45 @@
 import React, { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const BACKEND_URL = "https://aiweather.duckdns.org/test"; // Flask API URL
 
 const App = () => {
-    const [response, setResponse] = useState("");
-    const [command, setCommand] = useState(
-        "/home/ubuntu/anaconda3/envs/aiweather/bin/ai-models-gfs --input gfs --date 20240201 --time 1200 --assets /home/ubuntu/fcnv2 --path /home/ubuntu/testing.grib fourcastnetv2-small"
-    );
+    const [selectedModel, setSelectedModel] = useState("FourCastNetv2-small");
+    const [selectedDate, setSelectedDate] = useState(new Date());
+    const [selectedTime, setSelectedTime] = useState("00Z");
 
-    const handleButtonClick = () => {
-        fetch(BACKEND_URL, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ command })  // Send command to backend
-        })
-            .then(res => res.json())
-            .then(data => setResponse(data.message))
-            .catch(error => setResponse("Error connecting to Flask API"));
-    };
+    const models = ["FourCastNetv2-small", "Pangu-Weather", "GraphCast", "Aurora"];
+    const times = ["00Z", "06Z", "12Z", "18Z"];
 
     return (
-        <div style={{ textAlign: "center", marginTop: "50px" }}>
-            <h1>AI Weather Model</h1>
-            <textarea
-                value={command}
-                onChange={(e) => setCommand(e.target.value)}
-                rows="4"
-                cols="50"
-                style={{ marginBottom: "20px" }}
+        <div style={{ display: "flex", gap: "10px", alignItems: "center", margin: "20px" }}>
+            {/* Model Selection Dropdown */}
+            <select value={selectedModel} onChange={(e) => setSelectedModel(e.target.value)}>
+                {models.map((model) => (
+                    <option key={model} value={model}>
+                        {model}
+                    </option>
+                ))}
+            </select>
+
+            {/* Date Picker */}
+            <DatePicker
+                selected={selectedDate}
+                onChange={(date) => setSelectedDate(date)}
+                dateFormat="yyyy-MM-dd"
             />
-            <br />
-            <button onClick={handleButtonClick} style={{ fontSize: "20px", padding: "10px 20px" }}>
-                Submit AI Model Command
-            </button>
-            <p>{response}</p>
+
+            {/* Time Selection Dropdown */}
+            <select value={selectedTime} onChange={(e) => setSelectedTime(e.target.value)}>
+                {times.map((time) => (
+                    <option key={time} value={time}>
+                        {time}
+                    </option>
+                ))}
+            </select>
         </div>
     );
 };
-
 export default App;
 
