@@ -9,37 +9,66 @@ const App = () => {
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [selectedTime, setSelectedTime] = useState("00Z");
 
-    const models = ["FourCastNetv2-small", "Pangu-Weather", "GraphCast", "Aurora"];
+    const models = [
+        "FourCastNetv2-small",
+        "Pangu-Weather",
+        "GraphCast",
+        "GraphCast-1p00",
+        "Aurora-2.5-finetuned",
+    ];
     const times = ["00Z", "06Z", "12Z", "18Z"];
 
     return (
-        <div style={{ display: "flex", gap: "10px", alignItems: "center", margin: "20px" }}>
-            {/* Model Selection Dropdown */}
-            <select value={selectedModel} onChange={(e) => setSelectedModel(e.target.value)}>
-                {models.map((model) => (
-                    <option key={model} value={model}>
-                        {model}
-                    </option>
-                ))}
-            </select>
+        <div className="flex justify-center items-center min-h-screen bg-gray-100">
+            <div className="bg-white shadow-lg rounded-2xl p-6 w-96 space-y-4">
+                <h1 className="text-lg font-semibold text-gray-700 text-center">Weather Model Selection</h1>
 
-            {/* Date Picker */}
-            <DatePicker
-                selected={selectedDate}
-                onChange={(date) => setSelectedDate(date)}
-                dateFormat="yyyy-MM-dd"
-            />
+                {/* Model Selection Dropdown */}
+                <div>
+                    <label className="block text-sm font-medium text-gray-600">Select Model</label>
+                    <select
+                        value={selectedModel}
+                        onChange={(e) => setSelectedModel(e.target.value)}
+                        className="mt-1 block w-full p-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    >
+                        {models.map((model) => (
+                            <option key={model} value={model}>
+                                {model}
+                            </option>
+                        ))}
+                    </select>
+                </div>
 
-            {/* Time Selection Dropdown */}
-            <select value={selectedTime} onChange={(e) => setSelectedTime(e.target.value)}>
-                {times.map((time) => (
-                    <option key={time} value={time}>
-                        {time}
-                    </option>
-                ))}
-            </select>
+                {/* Date Picker */}
+                <div>
+                    <label className="block text-sm font-medium text-gray-600">Select Date</label>
+                    <DatePicker
+                        selected={selectedDate}
+                        onChange={(date) => setSelectedDate(date)}
+                        dateFormat="yyyy-MM-dd"
+                        className="mt-1 block w-full p-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    />
+                </div>
+
+                {/* Time Selection Dropdown */}
+                <div>
+                    <label className="block text-sm font-medium text-gray-600">Select Time</label>
+                    <select
+                        value={selectedTime}
+                        onChange={(e) => setSelectedTime(e.target.value)}
+                        className="mt-1 block w-full p-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    >
+                        {times.map((time) => (
+                            <option key={time} value={time}>
+                                {time}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+            </div>
         </div>
     );
 };
+
 export default App;
 
