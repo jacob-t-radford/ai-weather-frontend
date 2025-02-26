@@ -5,7 +5,7 @@ const BACKEND_URL = "https://aiweather.duckdns.org/test"; // Flask API URL
 const App = () => {
     const [response, setResponse] = useState("");
     const [command, setCommand] = useState(
-        "/home/ubuntu/anaconda3/envs/aiweather/bin/ai-models-gfs --input gfs --date 20240201 --time 1200 --assets /home/ubuntu/fcnv2 fourcastnetv2-small"
+        "/home/ubuntu/anaconda3/envs/aiweather/bin/ai-models-gfs --input gfs --date 20240201 --time 1200 --assets /home/ubuntu/fcnv2 --path /home/ubuntu/testing.grib fourcastnetv2-small"
     );
 
     const handleButtonClick = () => {
