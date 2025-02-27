@@ -89,3 +89,55 @@ select:focus, .react-datepicker__input-container input:focus {
     box-sizing: border-box; /* ✅ Ensures padding doesn't extend width */
 }
 
+/* Submit button styles */
+.submit-button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
+
+/* Flexbox for Select Date & Latest checkbox */
+.date-latest-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Space between DatePicker and Latest checkbox */
+.latest-checkbox {
+	position:relative;
+	top:10px;
+    display: flex;
+	font-size:14px;
+	font-weight:500;
+	color:#555;
+	justify-content:center;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Make checkbox label clickable */
+.latest-checkbox label {
+    cursor: pointer;
+}
+
+/* Disabled styles */
+select:disabled,
+.react-datepicker__input-container input:disabled {
+    background-color: #888;
+	opacity: 1;
+    cursor: not-allowed;
+	color:rgb(84,84,84);
+}
