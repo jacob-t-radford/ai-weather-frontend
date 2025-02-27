@@ -9,6 +9,7 @@ const App = () => {
     const [selectedModel, setSelectedModel] = useState("FourCastNetv2-small");
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [selectedTime, setSelectedTime] = useState("00Z");
+	const [selectedInit, setSelectedInit] = useState()
 
     const models = [
         "FourCastNetv2-small",
@@ -17,6 +18,12 @@ const App = () => {
         "GraphCast-1p00",
         "Aurora-2.5-finetuned",
     ];
+	const ics = [
+		"GFS",
+		"GEFS",
+		"GDAS"
+	];
+
     const times = ["00Z", "06Z", "12Z", "18Z"];
 
     return (
@@ -31,6 +38,18 @@ const App = () => {
                         {models.map((model) => (
                             <option key={model} value={model}>
                                 {model}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+
+                {/* Initial Condition Selection Dropdown */}
+                <div className="input-group">
+                    <label>Select Initial Conditions</label>
+                    <select value={selectedInit} onChange={(e) => setSelectedInit(e.target.value)}>
+                        {ics.map((ic) => (
+                            <option key={ic} value={ic}>
+                                {ic}
                             </option>
                         ))}
                     </select>
